@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
+import { User } from '../../Modelos/user';
 
 import { DataSource } from '@angular/cdk/table';
 

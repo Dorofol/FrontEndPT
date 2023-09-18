@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { InicioComponent } from './inicio/inicio.component';
-import { SesionIniciadaComponent } from './sesion-iniciada/sesion-iniciada.component';
-import { RegistroUsuariosComponent } from './registro-usuarios/registro-usuarios.component';
-import { VotacionPComponent } from './votacion-p/votacion-p.component';
+import { InicioComponent } from './Vistas/inicio/inicio.component';
+import { SesionIniciadaComponent } from './Vistas/sesion-iniciada/sesion-iniciada.component';
+import { RegistroUsuariosComponent } from './Vistas/registro-usuarios/registro-usuarios.component';
+import { VotacionPComponent } from './Vistas/votacion-p/votacion-p.component';
 
 const routes: Routes = [{ path: '', component: InicioComponent },
 { path: 'registro', component: RegistroUsuariosComponent },

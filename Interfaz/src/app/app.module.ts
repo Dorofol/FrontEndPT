@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicioComponent } from './inicio/inicio.component';
-import { SesionIniciadaComponent } from './sesion-iniciada/sesion-iniciada.component';
-import { VotacionPComponent } from './votacion-p/votacion-p.component';
-import { RegistroUsuariosComponent } from './registro-usuarios/registro-usuarios.component';
+import { InicioComponent } from './Vistas/inicio/inicio.component';
+import { SesionIniciadaComponent } from './Vistas/sesion-iniciada/sesion-iniciada.component';
+import { VotacionPComponent } from './Vistas/votacion-p/votacion-p.component';
+import { RegistroUsuariosComponent } from './Vistas/registro-usuarios/registro-usuarios.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
