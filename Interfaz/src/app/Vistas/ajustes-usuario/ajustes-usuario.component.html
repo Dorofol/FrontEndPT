@@ -1,0 +1,70 @@
+<h1 class="text">Sesion iniciada</h1>
+<h1 class="text">Mis votaciones activas</h1>
+<h1 class="text">Ajustes de usuario</h1>
+<div class="container">
+
+  <mat-toolbar class="app-toolbar">
+    <span class="app-title">Sistema de votación</span>
+    <span class="spacer"></span>
+
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/Ajustes" class="nav-link">Ajustes</a>
+    
+    <!-- Opción visible solo para admins -->
+    <ng-container *ngIf="authService.isAdmin()">
+      <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
+    </ng-container>
+    
+    <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
+  </mat-toolbar>
+</div>
+
+<div class="divText">
+    <form (submit)="actualizarUsuario()">
+        <ng-container *ngIf="authService.isAdmin()">
+            <div class="form-group">
+                <label for="idUsuario">ID usuario:</label>
+                <input type="number" id="idUsuario" [(ngModel)]="idUsuario" name="idUsuario" class="form-control"> 
+                <button type="submit" class="btn btn-margin">mi usuario</button>
+                <button type="submit" class="btn btn-margin">Obtener datos de usuario</button>
+            </div>
+        </ng-container>
+        <div class="form-group">
+            <label for="fechaNacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechaNacimiento" [(ngModel)]="fechaNacimiento" name="fechaNacimiento" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="nombreCompleto">Nombre completo:</label>
+            <input type="text" id="nombreCompleto" [(ngModel)]="nombreCompleto" name="nombreCompleto" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" [(ngModel)]="contrasena" name="contrasena" class="form-control">
+        </div>
+
+        <ng-container *ngIf="authService.isAdmin()">
+        <div class="form-group">
+            <label for="rolSistema">Rol en el sistema:</label>
+            <select id="rolSistema" [(ngModel)]="rolSistema" name="rolSistema" class="form-control">
+                <option value="Admin">Admin</option>
+                <option value="Usuario">Usuario</option>
+            </select>
+        </div>
+    </ng-container>
+
+        <div class="form-group">
+            <label for="idBlockchain">ID Blockchain:</label>
+            <input type="text" id="idBlockchain" [(ngModel)]="idBlockchain" name="idBlockchain" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" >Actualizar Usuario</button>
+    </form>
+</div>

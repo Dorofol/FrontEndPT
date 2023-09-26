@@ -1,0 +1,152 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button.btn {
+    background-color: #007BFF;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.btn:hover {
+    background-color: #0056b3;
+}
+table {
+    table-layout: fixed;
+    width: 90%;
+    position: relative; 
+    margin-left: auto;  
+    margin-right: auto; 
+    border-collapse: collapse;
+    border: 3px solid purple;
+    background-color: gray;
+    text-align: center;
+    font-size: 2.7vw;
+  } 
+    thead th:nth-child(1) {
+      width: 20%;
+    }
+    
+    thead th:nth-child(2) {
+      width: 20%;
+    }
+    
+    thead th:nth-child(3) {
+      width: 15%;
+    }
+    
+    thead th:nth-child(4) {
+      width: 20%;
+    }  
+    thead th:nth-child(5) {
+      width: 20%;
+    }
+    
+    th,
+    td {
+      padding: 20px;
+      font-size: 2.7vw;
+    }
+    .button1{
+      margin-top: 5%;
+      margin-left: 5%;
+      width: 90%;
+      height: 2cm;
+      background-color: #0d771b;
+      color: white;
+    }
+   .text {
+      text-align: center;
+      margin: 0 auto;
+      font-size: 2.7vw;
+   }
+   
+   .votacion{
+      width: 90%;
+      height: 2cm;
+      background-color: #be6318;
+      color: white;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+  }
+  .divText{
+    padding-left: 5%;
+    width: 90%;
+  }
+  
+  .app-toolbar {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #1976D2; /* Un color azul para la barra */
+  }
+  
+  .nav-link {
+      margin-right: 10px;
+      color: white; /* Letras blancas para los enlaces */
+  }
+  
+  .nav-link:hover {
+      text-decoration: underline; /* Subrayamos al pasar el mouse */
+  }
+  .app-title {
+    margin-right: 30px;  /* Añade margen a la derecha */
+  }
+  /* Tus estilos actuales, que se aplicarán para pantallas grandes (por ejemplo, escritorio) */
+  
+  /* ... */
+  
+  /* Estilos específicos para tablets */
+  
+  /* Estilos específicos para dispositivos móviles */
+  @media (max-width: 480px) {
+    table {
+        width: 100%;
+        font-size: 3vw; /* Aumenta el tamaño de la fuente para mejorar la legibilidad */
+    }
+  
+    th, td {
+        padding: 10px; /* Reduce el padding */
+        font-size: 2.7vw; /* Ajusta el tamaño de la fuente */
+    }
+  
+    .button1, .votacion {
+        width: 100%;
+        height: auto;
+        padding: 10px 20px; /* Cambia a padding para que se ajuste mejor */
+    }
+  
+    .text {
+        font-size: 2.7vw;
+    }
+    
+    .app-title {
+        margin-right: 10px; /* Reduce el margen a la derecha */
+    }
+  
+    /* Aquí puedes añadir o ajustar más estilos para móviles */
+  }
+  

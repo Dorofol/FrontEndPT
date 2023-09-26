@@ -9,6 +9,13 @@ import { VotacionPComponent } from './Vistas/votacion-p/votacion-p.component';
 import { RegistroUsuariosComponent } from './Vistas/registro-usuarios/registro-usuarios.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { CrearVotacionComponent } from './Vistas/crear-votacion/crear-votacion.component';
+import { CrearOrganizacionComponent } from './Vistas/crear-organizacion/crear-organizacion.component';
+import { AjustesUsuarioComponent } from './Vistas/ajustes-usuario/ajustes-usuario.component';
+
+
 
 @NgModule({
   declarations: [
@@ -16,14 +23,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     InicioComponent,
     SesionIniciadaComponent,
     VotacionPComponent,
-    RegistroUsuariosComponent
+    RegistroUsuariosComponent,
+    CrearVotacionComponent,
+    CrearOrganizacionComponent,
+    AjustesUsuarioComponent,
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,44 @@
+
+<h1 class="text">Sesion iniciada</h1>
+<h1 class="text">Mis votaciones activas</h1>
+<div class="container">
+
+  <mat-toolbar class="app-toolbar">
+    <span class="app-title">Sistema de votación</span>
+    <span class="spacer"></span>
+
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Ajustes</a>
+    
+    <!-- Opción visible solo para admins -->
+    <ng-container *ngIf="authService.isAdmin()">
+      <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
+    </ng-container>
+    
+    <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
+  </mat-toolbar>
+</div>
+<div class="divText">
+    <form (submit)="crearOrganizacion()">
+
+        <div class="form-group">
+            <label for="nombreVotacion">Nombre de la organización:</label>
+            <input type="text" id="nombreVotacion" [(ngModel)]="nombreVotacion" name="nombreVotacion" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="descripcionVotacion">Descripción de la organización:</label>
+            <textarea id="descripcionVotacion" [(ngModel)]="descripcionVotacion" name="descripcionVotacion" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="contrasenaAdmin">Contraseña del administrador:</label>
+            <input type="password" id="contrasenaAdmin" [(ngModel)]="contrasenaAdministrador" name="contrasenaAdmin" class="form-control">
+        </div>
+
+    <br>
+        <button type="submit" class="btn btn-primary">Crear Organización</button>
+
+    </form>
+</div>

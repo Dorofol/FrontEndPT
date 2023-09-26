@@ -8,7 +8,7 @@ import { User } from '../Modelos/user';
 })
 export class LoginUserService {
   private baseUrlcreate="http://localhost:8080/user/crearUsuario"
-  private baseUrl="http://localhost:8080/user/login" 
+  private baseUrl="http://localhost:8080/user/loginCookie" 
   constructor(private httpclient:HttpClient) { }
 
   loginUser(user:User):Observable<object>{

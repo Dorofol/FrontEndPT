@@ -1,0 +1,51 @@
+
+<h1 class="text">Sesion iniciada</h1>
+<h1 class="text">Mis votaciones activas</h1>
+<div class="container">
+
+  <mat-toolbar class="app-toolbar">
+    <span class="app-title">Sistema de votación</span>
+    <span class="spacer"></span>
+
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Ajustes</a>
+    
+    <!-- Opción visible solo para admins -->
+    <ng-container *ngIf="authService.isAdmin()">
+      <a mat-button routerLink="/inicioSesion" class="nav-link">Crear organización</a>
+    </ng-container>
+    
+    <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
+  </mat-toolbar>
+</div>
+<div class="divText">
+<form (submit)="crearVotacion()">
+    <div class="form-group">
+      <label for="nombre">Nombre de la votación:</label>
+      <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" class="form-control">
+    </div>
+  
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="fechaInicio">Fecha de inicio:</label>
+        <input type="date" id="fechaInicio" [(ngModel)]="fechaInicioVotacion" name="fechaInicio" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="fechaTermino">Fecha de término:</label>
+        <input type="date" id="fechaTermino" [(ngModel)]="fechaTerminoVotacion" name="fechaTermino" class="form-control">
+    </div>        
+    <div class="form-group">
+        <label for="contrasenaAdmin">Contraseña del administrador:</label>
+        <input type="password" id="contrasenaAdmin" [(ngModel)]="contrasenaAdministrador" name="contrasenaAdmin" class="form-control">
+    </div>
+  
+    <!-- Puedes agregar otros campos según tus necesidades -->
+<br>  
+    <button type="submit" class="btn btn-primary">Crear Votación</button>
+  </form>
+</div>
