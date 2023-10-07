@@ -1,5 +1,8 @@
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -7,10 +10,13 @@ import jwt_decode from 'jwt-decode';
 })
 export class AutenticacionService {
 
+  constructor(private httpclient:HttpClient) { }
   // ... (otros métodos y variables)
-  userRole: 'admin' | 'user' | null = 'admin'; 
+  userRole: 'Admin' | 'Usuario' | null = 'Admin'; 
   private TOKEN_KEY = 'auth_token';
   private USER_INFO_KEY = 'user_info';
+  
+  private baseUrl="http://localhost:8080/user/validateToken" 
   
   // Función para guardar el token en el Local Storage
   setToken(token: string): void {
@@ -28,16 +34,26 @@ export class AutenticacionService {
   }
   
   // Función para obtener la información del usuario del Local Storage
-  getUserInfo(): any {
-    const userInfo = localStorage.getItem(this.USER_INFO_KEY);
-    if (userInfo) {
-      return JSON.parse(userInfo);
+  getUserInfo(userInfo: any): any {
+    let informacion;
+    try{
+       informacion= JSON.stringify(userInfo)}catch(error){console.log(error);return null;}
+    if (informacion) {
+      return JSON.parse(informacion);
     }
     return null;
   }
   
   public isAdmin() {
-    return this.userRole === 'admin';
+
+    const tok=this.getToken()
+    if(tok){
+    const decodedToken = this.getDecodedToken(tok);
+if (decodedToken && decodedToken.rolSistema) {
+  this.userRole = decodedToken.rolSistema;
+ // console.log(decodedToken.rolSistema)
+}}
+    return this.userRole === 'Admin';
   }
   public getDecodedToken(tokenString: string): any {
     //const token = localStorage.getItem('token');
@@ -51,6 +67,28 @@ export class AutenticacionService {
     localStorage.removeItem(this.TOKEN_KEY);
     console.log("success")
   }
-  constructor() { }
+  validartok(): Observable<boolean> {
+    const tok1 = localStorage.getItem(this.TOKEN_KEY);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + tok1
+      })
+    };
+  
+    return new Observable<boolean>((observer) => {
+      this.httpclient.post(`${this.baseUrl}`, {}, httpOptions).subscribe(
+        (data: any) => {
+          observer.next(true);
+          observer.complete();
+        },
+        (err: any) => {
+          observer.next(false);
+          observer.complete();
+        }
+      );
+    });
+  }
+  
+  
 }
 

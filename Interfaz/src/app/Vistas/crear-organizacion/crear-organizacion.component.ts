@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { AutenticacionService } from '../../Servicios/autenticacion.service';
 
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { OrganizacionService } from 'src/app/Servicios/organizacion.service';
+
 
 @Component({
   selector: 'app-crear-organizacion',
@@ -19,28 +23,39 @@ export class CrearOrganizacionComponent {
   numVotantes: number = 0;
   estatus: boolean = true;
   authService: AutenticacionService;
+  token: any;
 
-  constructor(private _authService: AutenticacionService) { 
-    this.authService = _authService;}
+  constructor(private _authService: AutenticacionService,private organizacionService: OrganizacionService) { 
+    this.authService = _authService;
+  
+    this.token= this.authService.getToken()   
+  }
 
     public onLogoutClick(): void {
       this.authService.logout();
       window.location.href = "/";
     }
     crearOrganizacion() {
+      
+      this.authService.validartok().subscribe(isValid => {
+        if (isValid) {
+          
       const nuevaOrganizacion = {
-          candidatoGan: this.candidatoGan,
-          nombreVotacion: this.nombreVotacion,
-          descripcionVotacion: this.descripcionVotacion,
-          fechaInicioVotacion: this.fechaInicioVotacion,
-          fechaTerminoVotacion: this.fechaTerminoVotacion,
-          contrasenaAdministrador: this.contrasenaAdministrador,
-          numCandidatos: this.numCandidatos,
-          numVotantes: this.numVotantes,
-          estatus: this.estatus
+        nombreOrganizacion: this.nombreVotacion,
+        descripcion: this.descripcionVotacion,
+        contrasenaAdministrador: this.contrasenaAdministrador,
       };
 
+      this.organizacionService.crearOrganizacion(nuevaOrganizacion).subscribe(response => {
+        console.log('Organización creada:', response);
+      });
       console.log(nuevaOrganizacion);
-      // Aquí podrías enviar los datos al backend o a tu contrato en la blockchain.
+        } else {
+          alert("Token no valido.");
+          this.authService.logout();
+          window.location.href = "";
+        }
+      });
+      
   }
 }

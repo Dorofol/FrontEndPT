@@ -99,3 +99,28 @@ table {
 
   /* Aquí puedes añadir o ajustar más estilos para móviles */
 }
+
+
+
+
+.header-container {
+  display: flex;
+  justify-content: center;  /* Centra el contenido */
+  align-items: center;      /* Centra verticalmente el contenido */
+  position: relative;   
+  top: 10px;    /* Padding adicional para asegurar espacio a la derecha */
+}
+
+.text1 {
+  text-align: center; /* Centra el texto dentro de su espacio */
+}
+
+.user-info {
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end; 
+}

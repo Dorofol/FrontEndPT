@@ -14,7 +14,7 @@ import { AjustesUsuarioComponent } from './Vistas/ajustes-usuario/ajustes-usuari
 const routes: Routes = [{ path: '',canActivate: [RedireccionarIniciadosGuard],component:InicioComponent },
 { path: 'Ajustes',canActivate: [AutenticacionGuard],component: AjustesUsuarioComponent },
 { path: 'crearorganizacion',canActivate: [AutenticacionGuard],component: CrearOrganizacionComponent },
-{ path: 'crearVotacion/p',canActivate: [AutenticacionGuard],component: CrearVotacionComponent },
+{ path: 'crearLaVotacion',canActivate: [AutenticacionGuard],component: CrearVotacionComponent },
 { path: 'registro',canActivate: [RedireccionarIniciadosGuard],component: RegistroUsuariosComponent },
 //{ path: 'inicio/sesion', component: SesionIniciadaComponent },
 { path: 'votacion',canActivate: [RedireccionarIniciadosGuard],component: VotacionPComponent },

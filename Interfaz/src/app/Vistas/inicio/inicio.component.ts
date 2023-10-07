@@ -23,7 +23,7 @@ export class InicioComponent implements OnInit {
       
       const userInfo = this.autenticacionService.getDecodedToken(data.token);
       console.log(userInfo);
-      this.autenticacionService.setUserInfo(userInfo);
+      this.autenticacionService.getUserInfo(userInfo);
   
       alert("Se ha iniciado sesion.");
       window.location.href = "/inicioSesion";

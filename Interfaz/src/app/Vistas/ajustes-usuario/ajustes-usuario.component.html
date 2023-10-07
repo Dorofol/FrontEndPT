@@ -26,10 +26,19 @@
             <div class="form-group">
                 <label for="idUsuario">ID usuario:</label>
                 <input type="number" id="idUsuario" [(ngModel)]="idUsuario" name="idUsuario" class="form-control"> 
-                <button type="submit" class="btn btn-margin">mi usuario</button>
-                <button type="submit" class="btn btn-margin">Obtener datos de usuario</button>
+                <button type="button" class="btn btn-margin" (click)="obtenerMiUsuario()">mi usuario</button>
+                <button type="button" class="btn btn-margin" (click)="obtenerDatosUsuario()">Obtener datos por id</button>
             </div>
+            
         </ng-container>
+        
+        <ng-container *ngIf="authService.isAdmin()">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control">
+            <button type="button" class="btn btn-margin" (click)="obtenerDatosUsuarioEmail()">Obtener datos por email</button>
+        </div>
+    </ng-container>
         <div class="form-group">
             <label for="fechaNacimiento">Fecha de nacimiento:</label>
             <input type="date" id="fechaNacimiento" [(ngModel)]="fechaNacimiento" name="fechaNacimiento" class="form-control">
@@ -59,12 +68,8 @@
             <label for="idBlockchain">ID Blockchain:</label>
             <input type="text" id="idBlockchain" [(ngModel)]="idBlockchain" name="idBlockchain" class="form-control">
         </div>
-
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control">
-        </div>
         <br>
         <button type="submit" class="btn btn-primary" >Actualizar Usuario</button>
+      <!--  <button type="button" class="btn btn-margin" (click)="eliminarUsuario()">Borrar usuario</button>-->
     </form>
 </div>
