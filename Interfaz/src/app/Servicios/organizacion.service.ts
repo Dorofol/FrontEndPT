@@ -14,4 +14,7 @@ export class OrganizacionService {
   crearOrganizacion(organizacion: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/api/organizaciones/crearOrganizacion`, organizacion);
   }
+  obtenerPorIdUsuario(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/api/organizaciones/obtenerPorIdUsuario/${id}`);
+  }
 }

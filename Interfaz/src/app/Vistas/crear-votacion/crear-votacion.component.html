@@ -8,12 +8,12 @@
     <span class="spacer"></span>
 
     <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
-    <a mat-button routerLink="/inicioSesion" class="nav-link">Mis organizaciones</a>
-    <a mat-button routerLink="/inicioSesion" class="nav-link">Ajustes</a>
+    <a mat-button routerLink="/MisOrganizaciones" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/Ajustes" class="nav-link">Ajustes</a>
     
     <!-- Opción visible solo para admins -->
     <ng-container *ngIf="authService.isAdmin()">
-      <a mat-button routerLink="/inicioSesion" class="nav-link">Crear organización</a>
+      <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
     </ng-container>
     
     <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>

@@ -14,6 +14,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CrearVotacionComponent } from './Vistas/crear-votacion/crear-votacion.component';
 import { CrearOrganizacionComponent } from './Vistas/crear-organizacion/crear-organizacion.component';
 import { AjustesUsuarioComponent } from './Vistas/ajustes-usuario/ajustes-usuario.component';
+import { MisOrganizacionesComponent } from './Vistas/mis-organizaciones/mis-organizaciones.component';
+import { InteraccionVotacionComponent } from './Vistas/interaccion-votacion/interaccion-votacion.component';
 
 
 
@@ -27,6 +29,8 @@ import { AjustesUsuarioComponent } from './Vistas/ajustes-usuario/ajustes-usuari
     CrearVotacionComponent,
     CrearOrganizacionComponent,
     AjustesUsuarioComponent,
+    MisOrganizacionesComponent,
+    InteraccionVotacionComponent,
   ],
   imports: [
     FormsModule,

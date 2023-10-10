@@ -1,0 +1,42 @@
+<h1 class="text">Sesion iniciada</h1>
+<h1 class="text">Mis organizaciones</h1>
+<div class="container">
+
+<mat-toolbar class="app-toolbar">
+    <span class="app-title">Sistema de votación</span>
+    <span class="spacer"></span>
+
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
+    <a mat-button routerLink="/MisOrganizaciones" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/Ajustes" class="nav-link">Ajustes</a>
+    
+    <!-- Opción visible solo para admins -->
+    <ng-container *ngIf="authService.isAdmin()">
+      <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
+    </ng-container>
+    
+    <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
+  </mat-toolbar>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Titulo</th>
+        <th>Descripción</th>
+        <th>Fecha de Inicio</th>
+        <th>Fecha de Cierre</th>
+        <th>Estatus</th>
+        <th>Votar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let votacion of votaciones">
+        <td>{{ votacion.tituloVotacion }}</td>
+        <td>{{ votacion.descripcion }}</td>
+        <td>{{ votacion.fechaInicio | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ votacion.fechaCierre | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ votacion.estatus }}</td>
+        <td><button>Votar</button></td>
+      </tr>
+    </tbody>
+</table>

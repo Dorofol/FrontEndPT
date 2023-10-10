@@ -10,9 +10,13 @@ import { RedireccionarIniciadosGuard } from './Servicios/redireccionar-iniciados
 import { CrearVotacionComponent } from './Vistas/crear-votacion/crear-votacion.component';
 import { CrearOrganizacionComponent } from './Vistas/crear-organizacion/crear-organizacion.component';
 import { AjustesUsuarioComponent } from './Vistas/ajustes-usuario/ajustes-usuario.component';
+import { MisOrganizacionesComponent } from './Vistas/mis-organizaciones/mis-organizaciones.component';
+import { InteraccionVotacionComponent } from './Vistas/interaccion-votacion/interaccion-votacion.component';
 
 const routes: Routes = [{ path: '',canActivate: [RedireccionarIniciadosGuard],component:InicioComponent },
 { path: 'Ajustes',canActivate: [AutenticacionGuard],component: AjustesUsuarioComponent },
+{ path: 'interaccionVot',canActivate: [AutenticacionGuard],component: InteraccionVotacionComponent },
+{ path: 'MisOrganizaciones',canActivate: [AutenticacionGuard],component: MisOrganizacionesComponent },
 { path: 'crearorganizacion',canActivate: [AutenticacionGuard],component: CrearOrganizacionComponent },
 { path: 'crearLaVotacion',canActivate: [AutenticacionGuard],component: CrearVotacionComponent },
 { path: 'registro',canActivate: [RedireccionarIniciadosGuard],component: RegistroUsuariosComponent },

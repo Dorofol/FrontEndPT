@@ -1,0 +1,58 @@
+<h1 class="text">Sesion iniciada</h1>
+<h1 class="text">Mis organizaciones</h1>
+<div class="container">
+
+<mat-toolbar class="app-toolbar">
+    <span class="app-title">Sistema de votación</span>
+    <span class="spacer"></span>
+
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
+    <a mat-button routerLink="/MisOrganizaciones" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/Ajustes" class="nav-link">Ajustes</a>
+    
+    <!-- Opción visible solo para admins -->
+    <ng-container *ngIf="authService.isAdmin()">
+      <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
+    </ng-container>
+    
+    <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
+  </mat-toolbar>
+  </div>
+
+  <body>
+
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre de la Organización</th>
+            <th>Descripción</th>
+            <th>Fecha de Creación</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí los datos de las organizaciones serán insertados dinámicamente -->
+          <tr *ngFor="let org of organizaciones">
+            <td>{{org.nombreOrganizacion}}</td>
+            <td>{{org.descripcion}}</td>
+            <td>{{org.fechaCreacion | date:'dd/MM/yyyy'}}</td>
+            <td>{{org.rol}}</td>
+            <td>
+                <button (click)="verVotacion(org.idOrganizacion)" >Ver votacion</button>
+                <ng-container *ngIf="authService.isAdmin()">
+                <button >Agregar votacion</button>
+                <button >Editar organizacion</button>
+                </ng-container>
+            </td>
+        </tr>
+        </tbody>
+      </table>
+    </main>
+  
+    <footer>
+      <p >&copy; 2023 Rodolfo Rivas.</p>
+    </footer>
+  
+  </body>

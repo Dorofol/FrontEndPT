@@ -1,0 +1,149 @@
+table {
+    table-layout: fixed;
+    width: 90%;
+    position: relative; 
+    margin-left: auto;  
+    margin-right: auto; 
+    border-collapse: collapse;
+    border: 3px solid purple;
+    background-color: gray;
+    text-align: center;
+    font-size: 2.2vw;
+  } 
+    
+    th,
+    td {
+      padding: 20px;
+      font-size: 2vw;
+      height: auto;
+      line-height: 1.5; 
+      word-wrap: break-word;
+    }
+    .button1{
+      margin-top: 5%;
+      margin-left: 5%;
+      width: 90%;
+      height: 2cm;
+      background-color: #0d771b;
+      color: white;
+    }
+   .text {
+      text-align: center;
+      margin: 0 auto;
+      font-size: 2.7vw;
+   }
+   
+   .votacion{
+      width: 90%;
+      height: 2cm;
+      background-color: #be6318;
+      color: white;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+  }
+  
+  .app-toolbar {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #1976D2; /* Un color azul para la barra */
+  }
+  
+  .nav-link {
+      margin-right: 10px;
+      color: white; /* Letras blancas para los enlaces */
+  }
+  
+  .nav-link:hover {
+      text-decoration: underline; /* Subrayamos al pasar el mouse */
+  }
+  .app-title {
+    margin-right: 30px;  /* Añade margen a la derecha */
+  }
+  /* Tus estilos actuales, que se aplicarán para pantallas grandes (por ejemplo, escritorio) */
+  
+  /* ... */
+  
+  /* Estilos específicos para tablets */
+  
+  /* Estilos específicos para dispositivos móviles */
+  @media (max-width: 480px) {
+    table {
+        width: 100%;
+        font-size: 3vw; /* Aumenta el tamaño de la fuente para mejorar la legibilidad */
+    }
+  
+    th, td {
+        padding: 20px; /* Reduce el padding */
+        font-size: 2.7vw; /* Ajusta el tamaño de la fuente */
+        height: auto;
+        line-height: 1.5; 
+    }
+  
+    .button1, .votacion {
+        width: 100%;
+        height: auto;
+        padding: 10px 20px; /* Cambia a padding para que se ajuste mejor */
+    }
+  
+    .text {
+        font-size: 2.2vw;
+    }
+    
+    .app-title {
+        margin-right: 10px; /* Reduce el margen a la derecha */
+    }
+  
+    /* Aquí puedes añadir o ajustar más estilos para móviles */
+  }
+  
+  
+  
+  
+  .header-container {
+    display: flex;
+    justify-content: center;  /* Centra el contenido */
+    align-items: center;      /* Centra verticalmente el contenido */
+    position: relative;   
+    top: 10px;    /* Padding adicional para asegurar espacio a la derecha */
+  }
+  
+  .text1 {
+    text-align: center; /* Centra el texto dentro de su espacio */
+  }
+  
+  .user-info {
+    position: absolute;
+    right: 30px;
+    top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end; 
+  }
+
+  footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+button {
+    margin: 10 100; width: 90%; text-align: center;
+    font-family: Poppins-Regular;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    background-color: #15da2f;
+    color: black;
+    border: 4px solid  #084b11;  
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px;
+  }
+  
