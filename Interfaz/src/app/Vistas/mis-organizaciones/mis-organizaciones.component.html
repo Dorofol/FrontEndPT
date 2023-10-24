@@ -40,10 +40,10 @@
             <td>{{org.fechaCreacion | date:'dd/MM/yyyy'}}</td>
             <td>{{org.rol}}</td>
             <td>
-                <button (click)="verVotacion(org.idOrganizacion)" >Ver votacion</button>
+                <button (click)="verVotacion(org.idOrganizacion)" >Ver votaciones</button>
                 <ng-container *ngIf="authService.isAdmin()">
-                <button >Agregar votacion</button>
-                <button >Editar organizacion</button>
+                <button (click)="agregarVotacion(org)">Agregar votacion</button>
+                <button (click)="editarOrganizacion(org)" >Editar organizacion</button>
                 </ng-container>
             </td>
         </tr>

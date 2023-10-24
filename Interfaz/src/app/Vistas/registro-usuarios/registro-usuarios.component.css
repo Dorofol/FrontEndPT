@@ -6,8 +6,8 @@
     font-size: xx-large;
     font-family: Poppins-Regular;
     line-height: 1.5;
-    background-color: #c0acac;
-    border: 4px solid  #643c3c;  
+    background-color: #85cccc;
+    border: 4px solid  #3127b4;  
     border-radius: 100px;
   }
   p{
@@ -19,14 +19,14 @@
 .divcontenedor{
   
   background: #9053c7;
-  background: linear-gradient(-135deg, #5e9494, #1e1b4d);
+  background: linear-gradient(-135deg, #adc4c4, #c1b8d3);
   display: block;
   width: 100%;  
   max-height: 100%;
   max-width: 95%;
   border: 1px solid black;
   margin: auto;
-  background-color: #ffffff;
+  background-color: #d6d4d4;
   border-radius: 25px;
   
 }
@@ -36,9 +36,9 @@
     font-family: Poppins-Regular;
     font-size: 30px;
     line-height: 1.5;
-    background-color: #15da2f;
+    background-color: #5ce0da;
     color: black;
-    border: 4px solid  #084b11;  
+    border: 4px solid  #000000;  
     margin-left: 50%;
     transform: translateX(-50%);
     border-radius: 25px;
@@ -56,7 +56,10 @@
     line-height: 1.5;
     color: #000000;
   }
+  .label{
+background-color: white;
 
+  }
 
 
 

@@ -20,17 +20,21 @@ export class MisOrganizacionesComponent {
   authService: AutenticacionService;
   
   datosAguardar : any;
+  token:any;
 
   constructor(
     private router: Router ,private organizacionService: OrganizacionService,private _http: HttpClient,private _authService: AutenticacionService,private compartirDatos: CompartirDatosService) { 
-    this.authService = _authService;}
+    this.authService = _authService;
+    this.token= this.authService.getToken() }
 
   public onLogoutClick(): void {
     this.authService.logout();
     window.location.href = "/";
   }
   ngOnInit(): void {
-    const userId = 4; // Usar el ID de usuario que desees
+    
+    const userInfo = this.authService.getDecodedToken(this.token);
+    const userId = userInfo.idUsuario;
     this.organizacionService.obtenerPorIdUsuario(userId).subscribe(data => {
       this.organizaciones = data;
     });
@@ -49,6 +53,24 @@ export class MisOrganizacionesComponent {
           console.error('Error al obtener votaciones', error);
         }
       );
+  }
+  editarOrganizacion(orgData: any){
+    console.log(orgData)
+    this.datosAguardar=orgData;
+    
+    this.loadVotaciones();
+    
+    this.router.navigate(['/editarOrg']);
+    
+    
+  }
+  agregarVotacion(orgData: any){
+    console.log(orgData)
+    this.datosAguardar=orgData;
+    this.loadVotaciones();
+
+    this.router.navigate(['/agregarVotacion']);
+
   }
   loadVotaciones() {
     // Suponiendo que este método obtiene los datos del API

@@ -10,7 +10,7 @@
     <a mat-button routerLink="/MisOrganizaciones" class="nav-link">Mis organizaciones</a>
     <a mat-button routerLink="/Ajustes" class="nav-link">Ajustes</a>
     
-    <!-- Opción visible solo para admins -->
+    
     <ng-container *ngIf="authService.isAdmin()">
       <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
     </ng-container>
@@ -63,12 +63,11 @@
         </div>
     </ng-container>
 
-        <div class="form-group">
-            <label for="idBlockchain">ID Blockchain:</label>
-            <input type="text" id="idBlockchain" [(ngModel)]="idBlockchain" name="idBlockchain" class="form-control">
-        </div>
+        
         <br>
         <button type="submit" class="btn btn-primary" >Actualizar Usuario</button>
-      <!--  <button type="button" class="btn btn-margin" (click)="eliminarUsuario()">Borrar usuario</button>-->
     </form>
 </div>
+<footer>
+    <p >&copy; 2023 Rodolfo Rivas.</p>
+  </footer>

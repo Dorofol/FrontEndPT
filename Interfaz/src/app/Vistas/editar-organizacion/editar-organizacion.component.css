@@ -6,7 +6,7 @@ table {
     margin-right: auto; 
     border-collapse: collapse;
     border: 3px solid rgb(0, 0, 0);
-    background-color: rgb(189, 207, 207);
+    background-color: gray;
     text-align: center;
     font-size: 2.2vw;
   } 
@@ -33,7 +33,12 @@ table {
       font-size: 2.7vw;
    }
    
-
+   .votacion{
+      width: 90%;
+      height: 2cm;
+      background-color: #be6318;
+      color: white;
+    }
     .container {
       display: flex;
       flex-direction: column;
@@ -134,11 +139,67 @@ button {
     font-family: Poppins-Regular;
     font-size: 1.3rem;
     line-height: 1.5;
-    background-color: #0e8392;
+    background-color: #15da2f;
     color: black;
-    border: 4px solid  #000000;  
+    border: 4px solid  #0a0808;  
     margin-left: 50%;
     transform: translateX(-50%);
     border-radius: 25px;
   }
+
+  .divText {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #acaaaa;
+}
+
+.divText label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #070707;
+}
+
+.divText .form-group {
+    margin-bottom: 20px;
+}
+
+.divText input[type="text"],
+.divText input[type="password"],
+.divText textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.divText button.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.divText button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger{
+    background-color: red;
+}
+
+.btn-secondary{
+    
+    background-color: rgb(148, 194, 224);
+}
+
   

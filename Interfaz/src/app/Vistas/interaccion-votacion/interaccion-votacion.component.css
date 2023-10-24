@@ -5,8 +5,8 @@ table {
     margin-left: auto;  
     margin-right: auto; 
     border-collapse: collapse;
-    border: 3px solid purple;
-    background-color: gray;
+    border: 3px solid rgb(0, 0, 0);
+    background-color: rgb(189, 207, 207);
     text-align: center;
     font-size: 2.2vw;
   } 
@@ -139,9 +139,9 @@ button {
     font-family: Poppins-Regular;
     font-size: 1.3rem;
     line-height: 1.5;
-    background-color: #15da2f;
+    background-color: #0e8392;
     color: black;
-    border: 4px solid  #084b11;  
+    border: 4px solid  #1c084b;  
     margin-left: 50%;
     transform: translateX(-50%);
     border-radius: 25px;

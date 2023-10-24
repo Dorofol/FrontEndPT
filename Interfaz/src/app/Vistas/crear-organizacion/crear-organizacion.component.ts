@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { AutenticacionService } from '../../Servicios/autenticacion.service';
-
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { OrganizacionService } from 'src/app/Servicios/organizacion.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +23,7 @@ export class CrearOrganizacionComponent {
   authService: AutenticacionService;
   token: any;
 
-  constructor(private _authService: AutenticacionService,private organizacionService: OrganizacionService) { 
+  constructor(private router: Router ,private _authService: AutenticacionService,private organizacionService: OrganizacionService) { 
     this.authService = _authService;
   
     this.token= this.authService.getToken()   
@@ -35,6 +33,7 @@ export class CrearOrganizacionComponent {
       this.authService.logout();
       window.location.href = "/";
     }
+    
     crearOrganizacion() {
       
       this.authService.validartok().subscribe(isValid => {
@@ -46,14 +45,16 @@ export class CrearOrganizacionComponent {
         contrasenaAdministrador: this.contrasenaAdministrador,
       };
 
-      this.organizacionService.crearOrganizacion(nuevaOrganizacion).subscribe(response => {
+      const userInfo = this.authService.getDecodedToken(this.token);
+      this.organizacionService.crearOrganizacion(nuevaOrganizacion,userInfo.idUsuario).subscribe(response => {
         console.log('Organización creada:', response);
+        this.router.navigate(['/MisOrganizaciones']);
       });
       console.log(nuevaOrganizacion);
         } else {
           alert("Token no valido.");
           this.authService.logout();
-          window.location.href = "";
+          this.router.navigate(['']);
         }
       });
       

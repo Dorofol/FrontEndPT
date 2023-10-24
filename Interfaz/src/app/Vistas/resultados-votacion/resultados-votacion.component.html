@@ -1,0 +1,59 @@
+
+<br><h1 class="text">Sesion iniciada</h1>
+<br>
+<h1 class="text">Resultados Votacion</h1>
+<div class="container">
+
+<mat-toolbar class="app-toolbar">
+    <span class="app-title">Sistema de votación</span>
+    <span class="spacer"></span>
+
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
+    <a mat-button routerLink="/MisOrganizaciones" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/Ajustes" class="nav-link">Ajustes</a>
+    
+    <!-- Opción visible solo para admins -->
+    <ng-container *ngIf="authService.isAdmin()">
+      <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
+    </ng-container>
+    
+    <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
+  </mat-toolbar>
+  </div>
+ <!-- Sección del candidato ganador -->
+ <div class="winner-section">
+    <h2>Candidato Ganador</h2>
+    <div class="winner-details">
+        <p><strong>ID Candidato:</strong> 101</p>
+        <p><strong>Nombre del Candidato:</strong> Juan Pérez</p>
+        <p><strong>Descripción del Perfil:</strong> Desarrollador con 5 años de experiencia en blockchain y líder de proyectos en ABC Corp.</p>
+        <p><strong>Transaction Hash:</strong> 0xabcdef1234567890abcdef1234567890abcdef12</p>
+    </div>
+</div>
+
+<!-- Espaciado -->
+<div class="spacer "></div>
+<div class="winner-section">
+<h2 class="text">Consulta de transacciones de votos</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Timestamp</th>
+        <th scope="col">Transaction Hash</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of datos; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ dato.timestamp }}</td>
+        <td>{{ dato.transaccionHash }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<footer>
+    <p >&copy; 2023 Rodolfo Rivas.</p>
+  </footer>
+
+  

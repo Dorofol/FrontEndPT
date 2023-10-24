@@ -1,6 +1,6 @@
 <div class="header-container">
   <h1 class="text1">Sesion iniciada </h1>
-  <div class="user-info">
+  <div class="divText">
     <span class="user-name">{{nombreCompleto}}</span>
     <span class="user-email">{{email}}</span>
     <span class="user-role">Rol: {{rolSistema}}</span>
@@ -25,81 +25,48 @@
       <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
     </mat-toolbar>
     </div>
-                        
-<h1 class="text">Votaciones activas</h1><br>
-<table>
-    <tr>
-      <th>ID</th>
-      <th>Titulo</th>
-      <th>Participantes</th>
-      <th>Organizacion</th>
-      <th>Accion</th>
-    </tr>
-    <tr>
-      <td>0</td>
-      <td>Presidente del departamento</td>
-      <td>32</td>
-      <td>Nestle</td>
-      <td>
-        <a routerLink=""><button class="votacion">Ver</button></a></td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>Pintura de las paredes</td>
-      <td>25</td>
-      <td>Google</td>
-      <td>
-        <a routerLink=""><button class="votacion">Ver</button></a></td>
-    </tr>
-  </table><br>
-  <h1 class="text">Votaciones finalizadas</h1><br>
-  <table>
-      <tr>
-        <th>ID</th>
-        <th>Titulo</th>
-        <th>Participantes</th>
-        <th>Organizacion</th>
-        <th>Accion</th>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Seleccionar sabor para nuevo producto</td>
-        <td>50</td>
-        <td>Shark tank</td>
-        <td>
-          <a routerLink=""><button class="votacion">Ver</button></a></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Elección de presidente de la asociación</td>
-        <td>75</td>
-        <td>Asociación de Vecinos del Barrio</td>
-        <td>
-          <a routerLink=""><button class="votacion">Ver</button></a></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>Empleado del mes</td>
-        <td>15</td>
-        <td>Tienda XYZ</td>
-        <td>
-          <a routerLink=""><button class="votacion">Ver</button></a></td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>Mejor película del año</td>
-        <td>100</td>
-        <td>Academia de Cine</td>
-        <td>
-          <a routerLink=""><button class="votacion">Ver</button></a></td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>Elección del delegado estudiantil</td>
-        <td>200</td>
-        <td>Universidad XYZ</td>
-        <td>
-          <a routerLink=""><button class="votacion">Ver</button></a></td>
-      </tr>
-  </table>
-  
+    <h1 class="text">Votaciones activas</h1><br>
+    <table>
+        <tr>
+          <th>Organización</th>
+          <th>Titulo</th>
+          <th>Descripción</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Cierre</th>
+          <th>Accion</th>
+        </tr>
+        <tr *ngFor="let votacion of votacionesActivas">
+          <td>{{ votacion.nombreOrganizacion }}</td>
+          <td>{{ votacion.tituloVotacion }}</td>
+          <td>{{ votacion.descripcion }}</td>
+          <td>{{ votacion.fechaInicio }}</td>
+          <td>{{ votacion.fechaCierre }}</td>
+          <td><button class="votacion" (click)="verVotacion(votacion.idOrganizacion,votacion.idVotacion)">Ver</button>
+          </td>
+        </tr>
+    </table><br>
+    
+    <h1 class="text">Votaciones finalizadas</h1><br>
+    <table>
+        <tr>
+          <th>Organización</th>
+          <th>Titulo</th>
+          <th>Descripción</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Cierre</th>
+          <th>Accion</th>
+        </tr>
+        <tr *ngFor="let votacion of votacionesInactivas">
+          <td>{{ votacion.nombreOrganizacion }}</td>
+          <td>{{ votacion.tituloVotacion }}</td>
+          <td>{{ votacion.descripcion }}</td>
+          <td>{{ votacion.fechaInicio }}</td>
+          <td>{{ votacion.fechaCierre }}</td>
+          <td><button class="votacion" (click)="verVotacion(votacion.idOrganizacion,votacion.idVotacion)">Ver</button>
+          </td>
+        </tr>
+    </table>
+    <footer>
+      <p >&copy; 2023 Rodolfo Rivas.</p>
+    </footer>
+    

@@ -1,0 +1,86 @@
+<h1 class="text">Sesion iniciada</h1>
+<h1 class="text">Votacion</h1>
+<div class="container">
+
+<mat-toolbar class="app-toolbar">
+    <span class="app-title">Sistema de votación</span>
+    <span class="spacer"></span>
+
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
+    <a mat-button routerLink="/MisOrganizaciones" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/Ajustes" class="nav-link">Ajustes</a>
+    
+    <!-- Opción visible solo para admins -->
+    <ng-container *ngIf="authService.isAdmin()">
+      <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
+    </ng-container>
+    
+    <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
+  </mat-toolbar>
+  </div>
+
+  <!-- Información de votación -->
+<div class="votacion-info">
+    <h2>{{ votacion.tituloVotacion }}</h2>
+    <p>{{ votacion.descripcion }}</p>
+    <p><strong>Fecha de Inicio:</strong> {{ votacion.fechaInicio }}</p>
+    <p><strong>Fecha de Cierre:</strong> {{ votacion.fechaCierre }}</p>
+    <p><strong>Estatus:</strong> {{ votacion.estatus }}</p>
+    <p><strong>Direccion hash:</strong> {{ votacion.transaccionHash }}</p>
+  </div>
+  
+
+
+  <button class="btn btn-primary" routerLink="/resultadosVot" type="button">Ver resultados</button>
+  <ng-container *ngIf="authService.isAdmin()">
+<div class="collapse" id="collapsiblePanel">
+    <div class="card card-body">
+        <form>
+          
+            <h1 class="text">Agregar candidato</h1>
+            <div class="form-group">
+                <label for="nombreCandidato">Nombre del candidato</label>
+                <input type="text" class="form-control" id="nombreCandidato" #nombreCandidatoRef placeholder="Introduce el nombre del candidato">
+
+            </div>
+            <div class="form-group">
+                <label for="descripcionPerfil"> Descripción del perfil   </label>
+                <textarea class="form-control" id="descripcionPerfil" #descripcionPerfilRef rows="3" placeholder="Introduce una descripción para el perfil del candidato"></textarea>
+
+            </div>
+            <button class="btn btn-primary" type="button" (click)="enviarCandidato(nombreCandidatoRef.value, descripcionPerfilRef.value)">Agregar Candidato</button>
+
+        </form>
+    </div>
+</div>
+</ng-container>
+
+
+  <h1 class="text">Candidatos</h1>
+  <br>
+  <table class="candidatos-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción del Perfil</th>
+        <th>Transacción Hash</th>
+        <th>Votar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let candidato of candidatos">
+        <td>{{ candidato.idCandidato }}</td>
+        <td>{{ candidato.nombreCandidato }}</td>
+        <td>{{ candidato.descripcionPerfil }}</td>
+        <td>{{ candidato.transaccionHash }}</td>
+        <td><button (click)="votar(candidato.idCandidato)"> Votar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <footer>
+    <p >&copy; 2023 Rodolfo Rivas.</p>
+  </footer>
+  
+  
+  

@@ -1,0 +1,60 @@
+
+<br><h1 class="text">Sesion iniciada</h1>
+<br>
+<h1 class="text">Editar organizacion</h1>
+<div class="container">
+
+<mat-toolbar class="app-toolbar">
+    <span class="app-title">Sistema de votación</span>
+    <span class="spacer"></span>
+
+    <a mat-button routerLink="/inicioSesion" class="nav-link">Inicio</a>
+    <a mat-button routerLink="/MisOrganizaciones" class="nav-link">Mis organizaciones</a>
+    <a mat-button routerLink="/Ajustes" class="nav-link">Ajustes</a>
+    
+    <!-- Opción visible solo para admins -->
+    <ng-container *ngIf="authService.isAdmin()">
+      <a mat-button routerLink="/crearorganizacion" class="nav-link">Crear organización</a>
+    </ng-container>
+    
+    <a mat-button routerLink="/inicioSesion" class="nav-link" (click)="onLogoutClick()">Salir</a>
+  </mat-toolbar>
+  </div>
+
+  <form (ngSubmit)="agregarVotacion()" #votacionForm="ngForm" class="divText">
+
+    <div class="form-group">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" [(ngModel)]="tituloVotacion" name="titulo" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion" class="form-control" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="fechaInicio">Fecha Inicio:</label>
+        <input type="datetime-local" id="fechaInicio" [(ngModel)]="fechaInicio" name="fechaInicio" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="fechaCierre">Fecha Cierre:</label>
+        <input type="datetime-local" id="fechaCierre" [(ngModel)]="fechaCierre" name="fechaCierre" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="estatus">Estatus:</label>
+        <select id="estatus" [(ngModel)]="estatus" name="estatus" class="form-control" required>
+            <option value="Activa">Activa</option>
+            <option value="Inactiva">Inactiva</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agregar Votación</button>
+    <br>
+    <br>
+</form>
+<footer>
+    <p >&copy; 2023 Rodolfo Rivas.</p>
+  </footer>

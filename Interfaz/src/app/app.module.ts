@@ -16,6 +16,10 @@ import { CrearOrganizacionComponent } from './Vistas/crear-organizacion/crear-or
 import { AjustesUsuarioComponent } from './Vistas/ajustes-usuario/ajustes-usuario.component';
 import { MisOrganizacionesComponent } from './Vistas/mis-organizaciones/mis-organizaciones.component';
 import { InteraccionVotacionComponent } from './Vistas/interaccion-votacion/interaccion-votacion.component';
+import { VotacionComponent } from './Vistas/votacion/votacion.component';
+import { EditarOrganizacionComponent } from './Vistas/editar-organizacion/editar-organizacion.component';
+import { AgregarVotacionComponent } from './Vistas/agregar-votacion/agregar-votacion.component';
+import { ResultadosVotacionComponent } from './Vistas/resultados-votacion/resultados-votacion.component';
 
 
 
@@ -31,6 +35,10 @@ import { InteraccionVotacionComponent } from './Vistas/interaccion-votacion/inte
     AjustesUsuarioComponent,
     MisOrganizacionesComponent,
     InteraccionVotacionComponent,
+    VotacionComponent,
+    EditarOrganizacionComponent,
+    AgregarVotacionComponent,
+    ResultadosVotacionComponent,
   ],
   imports: [
     FormsModule,

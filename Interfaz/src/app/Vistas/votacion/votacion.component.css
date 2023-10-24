@@ -5,8 +5,8 @@ table {
     margin-left: auto;  
     margin-right: auto; 
     border-collapse: collapse;
-    border: 3px solid rgb(0, 0, 0);
-    background-color: rgb(189, 207, 207);
+    border: 3px solid purple;
+    background-color: gray;
     text-align: center;
     font-size: 2.2vw;
   } 
@@ -33,7 +33,12 @@ table {
       font-size: 2.7vw;
    }
    
-
+   .votacion{
+      width: 90%;
+      height: 2cm;
+      background-color: #be6318;
+      color: white;
+    }
     .container {
       display: flex;
       flex-direction: column;
@@ -43,7 +48,7 @@ table {
   
   .app-toolbar {
       margin-top: 20px;
-      width: 100%;
+      width: 135%;
       background-color: #1976D2; /* Un color azul para la barra */
   }
   
@@ -58,13 +63,6 @@ table {
   .app-title {
     margin-right: 30px;  /* Añade margen a la derecha */
   }
-  /* Tus estilos actuales, que se aplicarán para pantallas grandes (por ejemplo, escritorio) */
-  
-  /* ... */
-  
-  /* Estilos específicos para tablets */
-  
-  /* Estilos específicos para dispositivos móviles */
   @media (max-width: 480px) {
     table {
         width: 100%;
@@ -134,11 +132,109 @@ button {
     font-family: Poppins-Regular;
     font-size: 1.3rem;
     line-height: 1.5;
-    background-color: #0e8392;
+    background-color: #13aabe;
     color: black;
-    border: 4px solid  #000000;  
+    border: 4px solid  #080f4b;  
     margin-left: 50%;
     transform: translateX(-50%);
     border-radius: 25px;
   }
+  /* Estilo para la información de la votación */
+.votacion-info {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #858282;
+    box-shadow: 2px 2px 12px #aaa;
+  }
   
+  .votacion-info h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .votacion-info p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para la tabla de candidatos */
+  .candidatos-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .candidatos-table thead {
+    background-color: #333;
+    color: #000000;
+  }
+  
+  .candidatos-table th,
+  .candidatos-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  
+  .candidatos-table tr:nth-child(odd) {
+    background-color: #e6e3e3;
+  }
+  
+  .candidatos-table tr:hover {
+    background-color: #8d8b8b;
+  }
+  
+  .candidatos-table tbody tr:hover {
+    cursor: pointer;
+  }
+
+  /* Contenedor principal */
+/* Contenedor principal */
+.container {
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Botón principal */
+.btn-primary {
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 20px; /* Espaciado agregado */
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Tarjeta del panel desplegable */
+.card {
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;  /* Espaciado aumentado */
+  margin-bottom: 20px;  /* Espaciado agregado */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Inputs del formulario */
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 10px 15px;}
+  label {
+    margin-right: 15px;  /* Agrega margen a la derecha del label */
+}
+
+input[type="text"], textarea {
+    margin-left: 15px;  /* Agrega margen a la izquierda del cuadro de texto y el área de texto */
+}
