@@ -33,26 +33,29 @@
 
   <button class="btn btn-primary" routerLink="/resultadosVot" type="button">Ver resultados</button>
   <ng-container *ngIf="authService.isAdmin()">
+    <button 
+  class="btn btn-primary" 
+  (click)="statusVotacion()" 
+  type="button">
+    {{ votaciones.estatus === 'Activa' ? 'Finalizar votación' : 'Activar votación' }}
+</button>
 <div class="collapse" id="collapsiblePanel">
-    <div class="card card-body">
-        <form>
-          
-            <h1 class="text">Agregar candidato</h1>
-            <div class="form-group">
-                <label for="nombreCandidato">Nombre del candidato</label>
-                <input type="text" class="form-control" id="nombreCandidato" #nombreCandidatoRef placeholder="Introduce el nombre del candidato">
-
-            </div>
-            <div class="form-group">
-                <label for="descripcionPerfil"> Descripción del perfil   </label>
-                <textarea class="form-control" id="descripcionPerfil" #descripcionPerfilRef rows="3" placeholder="Introduce una descripción para el perfil del candidato"></textarea>
-
-            </div>
-            <button class="btn btn-primary" type="button" (click)="enviarCandidato(nombreCandidatoRef.value, descripcionPerfilRef.value)">Agregar Candidato</button>
-
-        </form>
-    </div>
+  <div class="card card-body">
+      <form>
+          <h1 class="text">Agregar candidato</h1>
+          <div class="form-group">
+              <label for="nombreCandidato">Nombre del candidato</label>
+              <input type="text" class="form-control" id="nombreCandidato" #nombreCandidatoRef placeholder="Introduce el nombre del candidato" [disabled]="votaciones.estatus !== 'Activa'">
+          </div>
+          <div class="form-group">
+              <label for="descripcionPerfil">Descripción del perfil</label>
+              <textarea class="form-control" id="descripcionPerfil" #descripcionPerfilRef rows="3" placeholder="Introduce una descripción para el perfil del candidato" [disabled]="votaciones.estatus !== 'Activa'"></textarea>
+          </div>
+          <button class="btn btn-primary" type="button" (click)="enviarCandidato(nombreCandidatoRef.value, descripcionPerfilRef.value)" [disabled]="votaciones.estatus !== 'Activa'">Agregar Candidato</button>
+      </form>
+  </div>
 </div>
+
 </ng-container>
 
 
@@ -74,10 +77,10 @@
         <td>{{ candidato.nombreCandidato }}</td>
         <td>{{ candidato.descripcionPerfil }}</td>
         <td>{{ candidato.transaccionHash }}</td>
-        <td><button (click)="votar(candidato.idCandidato)"> Votar</button></td>
+        <td><button (click)="votar(candidato.idCandidato)" [disabled]="votaciones.estatus !== 'Activa'"> Votar</button></td>
       </tr>
     </tbody>
-  </table>
+</table>
   <footer>
     <p >&copy; 2023 Rodolfo Rivas.</p>
   </footer>

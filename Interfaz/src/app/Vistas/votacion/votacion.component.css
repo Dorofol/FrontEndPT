@@ -5,7 +5,7 @@ table {
     margin-left: auto;  
     margin-right: auto; 
     border-collapse: collapse;
-    border: 3px solid purple;
+    border: 3px solid rgb(0, 0, 0);
     background-color: gray;
     text-align: center;
     font-size: 2.2vw;
@@ -33,12 +33,7 @@ table {
       font-size: 2.7vw;
    }
    
-   .votacion{
-      width: 90%;
-      height: 2cm;
-      background-color: #be6318;
-      color: white;
-    }
+
     .container {
       display: flex;
       flex-direction: column;

@@ -23,4 +23,8 @@ export class VotacionesService {
   agregarCandidato(candidato: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/api/votaciones/agregarCandidato`, candidato);
 }
+updateVotacionEstatus(idVotacion: number, idOrganizacion: number, estatusString: string): Observable<any> {
+  const url = `${this.baseUrl}/api/votaciones/estatus/${idVotacion}/${idOrganizacion}`;
+  return this.http.put(url, estatusString, { responseType: 'text' });
+}
 }

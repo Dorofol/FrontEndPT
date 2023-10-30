@@ -55,6 +55,17 @@ export class VotacionComponent implements OnInit {
       this.authService.logout();
       window.location.href = "/";
     }
+    statusVotacion(): void {
+      const newStatus = this.votaciones.estatus === 'Activa' ? 'Finalizada' : 'Activa';
+      
+      this.votacionesService.updateVotacionEstatus(this.votaciones.idVotacion, this.votaciones.idOrganizacion, newStatus).subscribe(response => {
+        console.log(response);
+        this.votaciones.estatus = newStatus; // Actualiza el estatus localmente tras el cambio exitoso
+      }, error => {
+        console.error("Error al actualizar el estatus:", error);
+      });
+    }
+    
     enviarCandidato(nombre: string, descripcion: string) {
       let data = this.votaciones 
       const candidatoDataBlock = {
@@ -64,7 +75,6 @@ export class VotacionComponent implements OnInit {
           contrasena: "contrasenaSegura123", // Y también la contraseña
           direccionHash : data.transaccionHash,
       };
-      console.log("aaaaaaaaaaaaaaaa")
       console.log(candidatoDataBlock)
 
       this.votacionesService.agregarCandidatoBlock(candidatoDataBlock).subscribe(
