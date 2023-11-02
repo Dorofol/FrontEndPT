@@ -31,7 +31,7 @@
   
 
 
-  <button class="btn btn-primary" routerLink="/resultadosVot" type="button">Ver resultados</button>
+  <button class="btn btn-primary" (click)="verResultados()" [disabled]="votaciones.estatus !== 'Finalizada'">Ver resultados</button>
   <ng-container *ngIf="authService.isAdmin()">
     <button 
   class="btn btn-primary" 
@@ -72,14 +72,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let candidato of candidatos">
+      <tr *ngFor="let candidato of candidatos; let i = index">
         <td>{{ candidato.idCandidato }}</td>
         <td>{{ candidato.nombreCandidato }}</td>
         <td>{{ candidato.descripcionPerfil }}</td>
         <td>{{ candidato.transaccionHash }}</td>
-        <td><button (click)="votar(candidato.idCandidato)" [disabled]="votaciones.estatus !== 'Activa'"> Votar</button></td>
+        <td><button (click)="realizarVotacion(i + 1)" [disabled]="votaciones.estatus !== 'Activa'">Votar</button></td>
       </tr>
-    </tbody>
+    </tbody>    
 </table>
   <footer>
     <p >&copy; 2023 Rodolfo Rivas.</p>

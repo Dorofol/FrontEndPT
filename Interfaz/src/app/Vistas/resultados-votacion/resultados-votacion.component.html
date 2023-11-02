@@ -21,14 +21,14 @@
   </mat-toolbar>
   </div>
  <!-- Sección del candidato ganador -->
- <div class="winner-section">
-    <h2>Candidato Ganador</h2>
-    <div class="winner-details">
-        <p><strong>ID Candidato:</strong> 101</p>
-        <p><strong>Nombre del Candidato:</strong> Juan Pérez</p>
-        <p><strong>Descripción del Perfil:</strong> Desarrollador con 5 años de experiencia en blockchain y líder de proyectos en ABC Corp.</p>
-        <p><strong>Transaction Hash:</strong> 0xabcdef1234567890abcdef1234567890abcdef12</p>
-    </div>
+ <div class="winner-section" *ngIf="candidatoGanador">
+  <h2>Candidato Ganador</h2>
+  <div class="winner-details">
+      <p><strong>ID Candidato:</strong> {{ candidatoGanador.idCandidato }}</p>
+      <p><strong>Nombre del Candidato:</strong> {{ candidatoGanador.nombreCandidato }}</p>
+      <p><strong>Descripción del Perfil:</strong> {{ candidatoGanador.descripcionPerfil }}</p>
+      <p><strong>Transaction Hash:</strong> {{ candidatoGanador.transaccionHash }}</p>
+  </div>
 </div>
 
 <!-- Espaciado -->

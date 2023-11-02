@@ -5,6 +5,7 @@ import { OrganizacionService } from 'src/app/Servicios/organizacion.service';
 import { CompartirDatosService } from 'src/app/Servicios/compartir-datos.service';
 import { Router } from '@angular/router';
 import { VotacionesService } from 'src/app/Servicios/votaciones.service';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-votacion',
   templateUrl: './votacion.component.html',
@@ -12,11 +13,23 @@ import { VotacionesService } from 'src/app/Servicios/votaciones.service';
 })
 export class VotacionComponent implements OnInit {
   authService: AutenticacionService;
-  token: string | null;
+  token: any;
   subscription: any;
   votaciones: any;
   candidatos: any[] = [];
   votacion: any = {};
+  iduserblo: any;
+  posicion:any;
+  
+  nombreCompleto: string = '';
+  email: string = '';
+  rolSistema: string = '';
+
+ 
+  private candidatoGanadorSource = new BehaviorSubject(null);
+  candidatoGanadorActual = this.candidatoGanadorSource.asObservable();
+  
+  userinformacion: any;
   constructor(private votacionesService:VotacionesService,private router: Router ,private organizacionService: OrganizacionService,private _http: HttpClient,private _authService: AutenticacionService,private compartirDatos: CompartirDatosService) { 
     this.authService = _authService;
     this.token= this.authService.getToken() 
@@ -29,6 +42,20 @@ export class VotacionComponent implements OnInit {
     }
   
     loadData() {
+      const userInfo = this.authService.getDecodedToken(this.token);
+  
+      if (this.token) {
+          //console.log(userInfo);
+          this.userinformacion=userInfo;
+          if(userInfo) {
+            this.nombreCompleto = userInfo.nombreCompleto || '';
+            this.email = userInfo.email || '';
+            this.rolSistema = userInfo.rolSistema || '';
+          }
+      } else {
+          console.log("No hay token disponible");
+      } 
+      console.log(this.email+"aaaaaaaaaaaaaaaaaaaa" )
       let data = this.votaciones 
   
       for (let key in data) {
@@ -47,6 +74,21 @@ export class VotacionComponent implements OnInit {
         estatus: data.estatus,
         transaccionHash: data.transaccionHash
       };
+      
+      this.organizacionService.obtenerEmailsPorOrganizacion(data.idOrganizacion).subscribe(data => {
+        this.iduserblo = data;
+      
+        const emailBuscado = this.email; // Reemplaza esto con el email actual que deseas buscar
+        const posicion1 = this.iduserblo.findIndex((usuario: any) => usuario.email === emailBuscado);
+      
+        if (posicion1 !== -1) {
+          console.log(`El usuario con el email ${emailBuscado} está en la posición ${posicion1 + 1}`);
+          this.posicion=posicion1+1;
+        } else {
+          console.log(`No se encontró el usuario con el email ${emailBuscado}`);
+        }
+      });
+      
     }
     ngOnDestroy() {
       this.subscription.unsubscribe();
@@ -55,6 +97,53 @@ export class VotacionComponent implements OnInit {
       this.authService.logout();
       window.location.href = "/";
     }
+
+    realizarVotacion(fila: number) {
+      console.log("Fila seleccionada:", fila); // Esto imprimirá el número de fila seleccionada
+      
+      let data = this.votaciones;
+      const votanteID = this.posicion;
+      const votacionID = data.idVotacion;
+      const direccionHash = data.transaccionHash;
+    
+      this.votacionesService.votar(fila, votanteID, votacionID, direccionHash)
+        .subscribe(response => {
+          console.log('Votación realizada', response);
+          
+          alert(`El voto para el candidato con ID ${fila} se agregó correctamente a la base de datos y a la red blockchain.${response}`);
+        }, error => {
+          console.error('Error al realizar la votación', error);
+          alert(`No se pudo agregar el voto paso algun error`);
+        });
+        
+    }
+    verResultados() {
+      let data = this.votaciones;
+      this.votacionesService.obtenerIdGanador(data.transaccionHash).subscribe(response => {
+          const indiceGanador = Number(response.id_candidatoGanador) - 1;
+      
+          const candidatoGanador = this.candidatos[indiceGanador];
+      
+          if (candidatoGanador) {
+              console.log('Datos del candidato ganador:', candidatoGanador);
+              
+              // Agregar el idVotacion al objeto del candidato ganador
+              candidatoGanador.idVotacion = data.idVotacion;
+  
+              // Actualizar el candidato ganador en el servicio
+              this.compartirDatos.updateGanador(candidatoGanador);
+              
+              this.router.navigate(['/resultadosVot']);
+          } else {
+              console.log('Índice del candidato ganador no válido:', indiceGanador);
+          }
+      });
+  }
+    updateCandidatoGanador(candidato: any) {
+      this.candidatoGanadorSource.next(candidato);
+    }
+
+
     statusVotacion(): void {
       const newStatus = this.votaciones.estatus === 'Activa' ? 'Finalizada' : 'Activa';
       
@@ -107,13 +196,5 @@ export class VotacionComponent implements OnInit {
           }
       );
   }
-  votar(idCandidato: number) {
-    // Aquí puedes realizar la lógica para agregar el voto a la base de datos y a la red blockchain.
-    // Como esto es solo un ejemplo, mostraremos el mensaje directamente.
 
-    // Hash genérico de ejemplo
-    let hashEjemplo = "0xabcdef1234567890abcdef1234567890abcdef12";
-
-    alert(`El voto para el candidato con ID ${idCandidato} se agregó correctamente a la base de datos y a la red blockchain. Transaction Hash: ${hashEjemplo}`);
-  }
 }
