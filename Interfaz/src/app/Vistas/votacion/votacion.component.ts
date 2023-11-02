@@ -57,12 +57,12 @@ export class VotacionComponent implements OnInit {
       } 
       console.log(this.email+"aaaaaaaaaaaaaaaaaaaa" )
       let data = this.votaciones 
-  
+  try{
       for (let key in data) {
         if (data[key].idCandidato) {
           this.candidatos.push(data[key]);
         }
-      }
+      }}catch{}
   
       this.votacion = {
         idVotacion: data.idVotacion,
@@ -158,7 +158,7 @@ export class VotacionComponent implements OnInit {
     enviarCandidato(nombre: string, descripcion: string) {
       let data = this.votaciones 
       const candidatoDataBlock = {
-          id_candidato: 110, // Ejemplo de generación de un ID aleatorio. Ajusta según tus necesidades.
+          id_candidato: 110,
           nombre_candidato: nombre,
           email_candidato: descripcion, // Añade los campos adicionales según necesites.
           contrasena: "contrasenaSegura123", // Y también la contraseña
