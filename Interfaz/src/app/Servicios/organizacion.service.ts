@@ -38,5 +38,9 @@ eliminarUsuarioDeOrganizacion(idOrganizacion: number, idUsuario: number): Observ
   return this.http.delete(`${this.baseUrl}/api/organizaciones/eliminarUsuarioOrganizacion`, { params });
 }
 
+actualizarOrganizacion(id: number, organizacion: any): Observable<any> {
+  return this.http.put(`${this.baseUrl}/api/organizaciones/editarOrganizacion/${id}`, organizacion);
+}
+
 
 }

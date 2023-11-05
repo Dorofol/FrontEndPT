@@ -154,4 +154,32 @@ eliminarUsuario(usuario: any) {
       }
   );});
 }
+
+actualizarOrganizacion() {
+  if (!this.nombreOrganizacion || !this.descripcion || !this.contrasenaAdministrador) {
+    // Aquí puedes mostrar algún mensaje de error o realizar alguna acción.
+    console.error('Todos los campos son obligatorios.');
+    return;
+  }
+
+  const id = this.organizacion.idOrganizacion; 
+  const organizacion = {
+    nombreOrganizacion: this.nombreOrganizacion,
+    descripcion: this.descripcion,
+    contrasenaAdministrador: this.contrasenaAdministrador
+  };
+
+  this.organizacionService.actualizarOrganizacion(id, organizacion).subscribe(
+    data => {
+      console.log('Organización actualizada con éxito:', data);
+      window.alert('Organización actualizada con éxito:'+ data);
+      this.router.navigate(['/MisOrganizaciones']);
+    },
+    error => {
+      console.error('Ocurrió un error al actualizar la organización:', error);
+      window.alert('Ocurrió un error al actualizar la organización:');
+    }
+  );
+}
+
 }
