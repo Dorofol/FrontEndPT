@@ -11,14 +11,37 @@ table {
     font-size: 2.2vw;
   } 
     
-    th,
-    td {
-      padding: 20px;
-      font-size: 2vw;
-      height: auto;
-      line-height: 1.5; 
-      word-wrap: break-word;
-    }
+  th,
+  td {
+    padding: 20px;
+    font-size: 1vw;
+    height: auto;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word; /* Asegura que se rompa la palabra si es necesario */
+    white-space: normal; /* Permite ajustar el espacio blanco */
+  }
+  
+  td {
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  td:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    white-space: nowrap;
+    overflow: visible;
+    left: 0;
+    top: 0;
+    text-overflow: clip;
+    background-color: #fff; /* O el color de fondo de tu tabla */
+    padding: 0 5px; /* O lo que sea necesario */
+  }
+  
+  
     .button1{
       margin-top: 5%;
       margin-left: 5%;
@@ -30,7 +53,7 @@ table {
    .text {
       text-align: center;
       margin: 0 auto;
-      font-size: 2.7vw;
+      font-size: 2.4vw;
    }
    
    .votacion{

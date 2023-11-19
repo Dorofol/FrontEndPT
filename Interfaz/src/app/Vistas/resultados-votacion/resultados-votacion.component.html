@@ -1,7 +1,7 @@
 
-<br><h1 class="text">Sesion iniciada</h1>
+<br><h1 class="text">Sesión iniciada</h1>
 <br>
-<h1 class="text">Resultados Votacion</h1>
+<h1 class="text">Resultados Votación</h1>
 <div class="container">
 
 <mat-toolbar class="app-toolbar">
@@ -34,26 +34,24 @@
 <!-- Espaciado -->
 <div class="spacer "></div>
 <div class="winner-section">
-<h2 class="text">Consulta de transacciones de votos</h2>
+<label class="text2">Consulta de transacciones de votos</label>
+<br>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Timestamp</th>
-        <th scope="col">Transaction Hash</th>
+        <th class="text1">ID</th>
+        <th class="text1">Timestamp</th>
+        <th class="text1">Transaction Hash</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let dato of datos; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
+        <th class="text1">{{ i + 1 }}</th>
         <td>{{ dato.timestamp }}</td>
         <td>{{ dato.transaccionHash }}</td>
       </tr>
     </tbody>
   </table>
 </div>
-<footer>
-    <p >&copy; 2023 Rodolfo Rivas.</p>
-  </footer>
 
   

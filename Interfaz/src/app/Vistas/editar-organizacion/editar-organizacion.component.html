@@ -1,7 +1,7 @@
 
-<br><h1 class="text">Sesion iniciada</h1>
+<br><h1 class="text">Sesión iniciada</h1>
 <br>
-<h1 class="text">Editar organizacion</h1>
+<h1 class="text">Editar organización</h1>
 <div class="container">
 
 <mat-toolbar class="app-toolbar">
@@ -51,12 +51,12 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let user of displayedEmails">
-                                    <td>{{ user.email }}</td>
-                                    <td>{{ user.rol }}</td>
+                                    <td data-title="{{ user.email }}">{{ user.email }}</td>
+                                    <td data-title="{{ user.rol }}">{{ user.rol }}</td>
                                     <td>
-                                        <button (click)="eliminarUsuario(user.email)" class="btn btn-danger btn-sm">X</button>
+                                      <button (click)="eliminarUsuario(user.email)" class="btn btn-danger btn-sm">X</button>
                                     </td>
-                                </tr>
+                                  </tr>
                             </tbody>
                         </table>
                       <div class="pagination-controls"><br>
@@ -85,9 +85,7 @@
         </form>
     </div>
 </ng-container>
-<footer>
-    <p >&copy; 2023 Rodolfo Rivas.</p>
-  </footer>
+
 
 
 

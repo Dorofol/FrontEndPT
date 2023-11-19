@@ -50,6 +50,17 @@ button.btn:hover {
       font-size: 2.7vw;
    }
    
+.text1{
+
+    font-size: 2vw;
+
+}
+.text2{
+    text-align: center;
+    font-size: 2vw;
+
+}
+
    .votacion{
       width: 90%;
       height: 2cm;
@@ -92,7 +103,7 @@ button.btn:hover {
   
     th, td {
         padding: 10px; 
-        font-size: 2.7vw; 
+        font-size: 2.2vw; 
     }
   
     .button1, .votacion {
@@ -137,6 +148,7 @@ button.btn:hover {
 }
 
 .table td {
+    padding: 20px;
     word-wrap: break-word; 
     overflow-wrap: break-word;
 }
@@ -149,13 +161,15 @@ button.btn:hover {
 }
 
 .table td {
-    font-size: 2.2vw; 
+    font-size: 1.7vw; 
 }
 
 .table td {
     min-height: 2.5em; 
     line-height: 1.4;   
 }
+
+
 
 
   
